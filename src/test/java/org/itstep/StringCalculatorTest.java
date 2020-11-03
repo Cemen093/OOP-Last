@@ -71,6 +71,46 @@ public class StringCalculatorTest {
         Assert.assertEquals(8, StringCalculator.add("// [&&] [|||] \n3|||2&&3"));
     }
 
+    @Test
+    public void kata08(){
+        Assert.assertEquals(14, StringCalculator.add("//[#$]\n1#$2 #$ 3", "// [&&] [||| \n3 |||2 &&3"));
+        Assert.assertEquals(10, StringCalculator.add("1", "1,2", "1\n2,3"));
+    }
+
+    @Test
+    public void kata09(){
+        /*показать все отрицательные числа в сообщение об исключении.
+        Результат "throw NumberNegativException"
+        Это как?*/
+        ByteArrayOutputStream bufferedOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bufferedOutputStream));
+        StringCalculator.add("1, – 1");
+        Assert.assertEquals("– 1\nthrow NumberNegativException\r\n", bufferedOutputStream.toString());
+        bufferedOutputStream.reset();
+        StringCalculator.add(" – 1, 1");
+        Assert.assertEquals("– 1\nthrow NumberNegativException\r\n", bufferedOutputStream.toString());
+        bufferedOutputStream.reset();
+        StringCalculator.add(" – 1, – 1");
+        Assert.assertEquals("– 1 – 1\nthrow NumberNegativException\r\n", bufferedOutputStream.toString());
+        bufferedOutputStream.reset();
+        StringCalculator.add(" – 1,1\n – 1");
+        Assert.assertEquals("– 1 – 1\nthrow NumberNegativException\r\n", bufferedOutputStream.toString());
+        System.setOut(null);
+    }
+
+    @Test
+    public void kata10(){
+        /*показать все отрицательные числа в сообщение об исключении.
+        Результат "throw NumberNegativException"
+        Это как?*/
+        Assert.assertEquals(6, StringCalculator.add("// [*] [%] \n1 * 2% 3"));
+        Assert.assertEquals(8, StringCalculator.add("// [&&] [|||]\n3 |||2&&3"));
+        Assert.assertEquals(7, StringCalculator.add("// [//] \n 1//2//4"));
+        Assert.assertEquals(1998, StringCalculator.add("999,999"));
+        Assert.assertEquals(3, StringCalculator.add("3,1001"));
+        Assert.assertEquals(6, StringCalculator.add("// [*] [%][] \n1 * 2% 3"));
+    }
+
     /*
         Assert.assertEquals(, StringCalculator.add());*/
 }
