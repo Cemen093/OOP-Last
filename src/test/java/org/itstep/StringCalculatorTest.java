@@ -65,6 +65,12 @@ public class StringCalculatorTest {
         Assert.assertEquals(20, StringCalculator.add("//[xy]\n3xy4xy5xy8"));
     }
 
+    @Test
+    public void kata07(){
+        Assert.assertEquals(6, StringCalculator.add("// [*] [%] \n1*2%3"));
+        Assert.assertEquals(8, StringCalculator.add("// [&&] [|||] \n3|||2&&3"));
+    }
+
     /*
         Assert.assertEquals(, StringCalculator.add());*/
 }

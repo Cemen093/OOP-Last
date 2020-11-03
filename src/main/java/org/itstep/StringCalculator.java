@@ -77,6 +77,7 @@ public class StringCalculator {
         str = str.substring(2).trim();
         regexUser = str.split("]");
         for (int i = 0; i < regexUser.length; i++) {
+            regexUser[i] = regexUser[i].trim();
             if (regexUser[i].length() > 1) {
                 regexUser[i] = regexUser[i].substring(1);
             }
@@ -88,6 +89,8 @@ public class StringCalculator {
             for (int j = 0; j < regexUser[i].length(); j++) {
                 if (regexUser[i].charAt(j) == '*') {
                     tmp += "\\*";
+                } else if (regexUser[i].charAt(j) == '|') {
+                    tmp += "\\|";
                 } else {
                     tmp += regexUser[i].charAt(j);
                 }
@@ -99,7 +102,7 @@ public class StringCalculator {
         for (int i = 0; i < regexUser.length; i++) {
             boolean check = true;
             for (int j = 0; j < regexUser[i].length(); j++) {
-                int num = regexUser[i].charAt(i);
+                int num = regexUser[i].charAt(j);
                 if (!(num <= '9' && num >= '0')) {
                     check = false;
                 }
