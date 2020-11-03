@@ -51,12 +51,18 @@ public class StringCalculatorTest {
         ByteArrayOutputStream bufferedOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bufferedOutputStream));
         StringCalculator.add("//1\n1 1 1");
-        Assert.assertEquals("throw SpliterFormatException", bufferedOutputStream.toString());
+        Assert.assertEquals("throw SpliterFormatException\r\n", bufferedOutputStream.toString());
         bufferedOutputStream.reset();
         StringCalculator.add("//;\n1#2");
-        Assert.assertEquals("throw SpliterFormatException", bufferedOutputStream.toString());
+        Assert.assertEquals("throw SpliterFormatException\r\n", bufferedOutputStream.toString());
         System.setOut(null);
 
+    }
+
+    @Test
+    public void kata06(){
+        Assert.assertEquals(6, StringCalculator.add("//[***]\n1 *** 2 *** 3"));
+        Assert.assertEquals(20, StringCalculator.add("//[xy]\n3xy4xy5xy8"));
     }
 
     /*
