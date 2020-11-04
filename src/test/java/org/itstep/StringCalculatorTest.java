@@ -111,6 +111,17 @@ public class StringCalculatorTest {
         Assert.assertEquals(6, StringCalculator.add("// [*] [%][] \n1 * 2% 3"));
     }
 
-    /*
-        Assert.assertEquals(, StringCalculator.add());*/
+    @Test
+    public void kata11(){
+        Assert.assertEquals(6, StringCalculator.add("2^, 2"));
+        Assert.assertEquals(10, StringCalculator.add("3^\n1"));
+        Assert.assertEquals(8, StringCalculator.add("2^2, 2^2"));
+    }
+
+    @Test
+    public void kata12(){
+        Assert.assertEquals(10, StringCalculator.add("2^3, 2"));
+        Assert.assertEquals(31, StringCalculator.add("3^3\n2^2"));
+        Assert.assertEquals(257, StringCalculator.add("//;\n1; 2^8"));
+    }
 }

@@ -49,6 +49,18 @@ public class StringCalculator {
                                 break;
                             }
                         }
+                        //возведение в степень
+                        if (c == '^' && j > 0){
+                            if (j == strNums[i].length() - 1) {
+                                strNums[i] = String.valueOf((int) Math.pow(Integer.parseInt(strNums[i].substring(0, j)), 2));
+                                break;
+                            }
+                            else {
+                                String[] tmp = strNums[i].split("\\^");
+                                strNums[i] = String.valueOf((int)Math.pow(Integer.parseInt(tmp[0]),Integer.parseInt(tmp[1])));
+                                break;
+                            }
+                        }
                         System.out.println("throw SpliterFormatException");
                         return 0;
                     }
@@ -77,7 +89,7 @@ public class StringCalculator {
         time = System.nanoTime() - time;
         if(time/1_000_000.0 > 30){
             System.out.println("throw TimeException");
-            return -1;
+            return 0;
         }
 
         return sum;
